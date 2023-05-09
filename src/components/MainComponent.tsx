@@ -19,7 +19,7 @@ export const MainComponent: FC = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h1>React hook form</h1>
                 <label>Name</label>
-                <input type="text" {...register("name")} />
+                <input type="text" {...(register("name"), { required: true, maxLength: 15, })} />
 
                 <label>Age</label>
                 <input type="number" {...register("age")} />
