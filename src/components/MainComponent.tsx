@@ -12,6 +12,8 @@ export const MainComponent: FC = () => {
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
+
+    console.log();
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -19,7 +21,13 @@ export const MainComponent: FC = () => {
                 <label>Name</label>
                 <input type="text" {...register("name")} />
 
-                
+                <label>Age</label>
+                <input type="number" {...register("age")} />
+
+                <label>Are you alive?</label>
+                <input type="checkbox" {...register("isAlive")} />
+
+                <input type="submit" />
             </form>
         </div>
     );
