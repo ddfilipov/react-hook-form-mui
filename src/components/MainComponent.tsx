@@ -1,10 +1,26 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 
+interface InputValues {
+    name: string;
+    age: number;
+    isAlive: boolean;
+}
+
 export const MainComponent: FC = () => {
+    const { register, handleSubmit } = useForm<InputValues>();
+    const onSubmit = (data: InputValues) => {
+        window.alert(JSON.stringify(data));
+    };
     return (
         <div>
-            <h1>Main component</h1>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <h1>React hook form</h1>
+                <label>Name</label>
+                <input type="text" {...register("name")} />
+
+                
+            </form>
         </div>
     );
 };
