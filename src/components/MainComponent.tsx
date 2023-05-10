@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { CustomInputText } from "./CustomInputText";
 
 interface InputValues {
     name: string;
@@ -19,13 +20,15 @@ export const MainComponent: FC = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h1>React hook form</h1>
                 <label>Name</label>
-                <input type="text" {...(register("name"), { required: true, maxLength: 15, })} />
+                <input type="text" {...(register("name"), { required: true, maxLength: 15 })} />
 
                 <label>Age</label>
                 <input type="number" {...register("age")} />
 
                 <label>Are you alive?</label>
                 <input type="checkbox" {...register("isAlive")} />
+
+                <CustomInputText label="Custom input" />
 
                 <input type="submit" />
             </form>

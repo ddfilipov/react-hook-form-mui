@@ -9,6 +9,7 @@ export const CustomInputText: FC<CustomInputTextProps> = ({ label }) => {
     const handleChangeValue = (val: string) => {
         setInputValue(val);
     };
+    console.log(inputValue)
     return (
         <>
             <label>{label}</label>
