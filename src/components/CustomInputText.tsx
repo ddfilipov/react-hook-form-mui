@@ -1,15 +1,22 @@
-import { ChangeEventHandler, FC } from "react";
+import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
 
 interface CustomInputTextProps {
     label: string;
 }
 
 export const CustomInputText: FC<CustomInputTextProps> = ({ label }) => {
-    const handleChangeValue = (e:  ChangeEventHandler<HTMLInputElement>) => {};
+    const [inputValue, setInputValue] = useState<string>("");
+    const handleChangeValue = (val: string) => {
+        setInputValue(val);
+    };
     return (
         <>
             <label>{label}</label>
-            <input type="text" onChange={(e: ChangeEventHandler<HTMLInputElement>) => handleChangeValue(e)} />
+            <input
+                type="text"
+                onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
+                value={inputValue}
+            />
         </>
     );
 };
