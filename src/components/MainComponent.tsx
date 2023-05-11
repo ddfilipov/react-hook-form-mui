@@ -12,13 +12,7 @@ interface InputValues {
 
 const MainContainer = styled.div`
     border: 1px solid white;
-    background-color: #181817;
     height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    color: white;
 `;
 
 export const MainComponent: FC = () => {
