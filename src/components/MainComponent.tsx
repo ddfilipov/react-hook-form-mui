@@ -1,12 +1,24 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { CustomInputText } from "./CustomInputText";
+import styled from "@emotion/styled";
+import "../app/page.module.css";
 
 interface InputValues {
     name: string;
     age: number;
     isAlive: boolean;
 }
+
+const MainContainer = styled.div`
+    border: 1px solid white;
+    background-color: #181817;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+`;
 
 export const MainComponent: FC = () => {
     const { register, handleSubmit } = useForm<InputValues>();
@@ -16,7 +28,7 @@ export const MainComponent: FC = () => {
 
     console.log();
     return (
-        <div>
+        <MainContainer>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h1>React hook form</h1>
                 <label>Name</label>
@@ -32,6 +44,6 @@ export const MainComponent: FC = () => {
 
                 <input type="submit" />
             </form>
-        </div>
+        </MainContainer>
     );
 };
