@@ -16,8 +16,9 @@ const MainContainer = styled.div`
     height: 100vh;
     width: 100vw;
     box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+    padding: 0;
+    margin: 0;
+    color: white;
 `;
 
 export const MainComponent: FC = () => {
