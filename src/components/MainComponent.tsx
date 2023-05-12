@@ -13,6 +13,7 @@ interface InputValues {
 const MainContainer = styled.div`
     border: 1px solid white;
     height: 100vh;
+    padding: 10px;
 `;
 
 export const MainComponent: FC = () => {

@@ -9,6 +9,8 @@ const StyledInput = styled.div`
     max-width: 300px;
     display: grid;
     grid-template-rows: 1fr 1fr;
+    padding: 10px;
+    gap: 5px;
 `;
 export const CustomInputText: FC<CustomInputTextProps> = ({ label }) => {
     const [inputValue, setInputValue] = useState<string>("");
