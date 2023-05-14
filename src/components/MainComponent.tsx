@@ -29,14 +29,14 @@ export const MainComponent: FC = () => {
     };
 
     const handleResetForm = () => {
-        // reset("name");
+        reset(defaultFormValues);
     };
     return (
         <MainContainer>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h1>React hook form</h1>
                 <label>Name</label>
-                <input type="text" {...(register("name"), { required: true, maxLength: 15 })} />
+                <input type="text" {...register("name", { required: true, maxLength: 15 })} />
 
                 <label>Age</label>
                 <input type="number" {...register("age")} />
@@ -47,7 +47,7 @@ export const MainComponent: FC = () => {
                 <CustomInputText label="Custom input" />
 
                 <button type="button" onClick={handleResetForm}>
-                    Reset
+                    Reset form values
                 </button>
                 <input type="submit" />
             </form>
