@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface CustomInputTextProps {
     label: string;
@@ -17,14 +18,17 @@ export const CustomInputText: FC<CustomInputTextProps> = ({ label }) => {
     const handleChangeValue = (val: string) => {
         setInputValue(val);
     };
-    
+
+    const { register } = useFormContext();
+
     return (
         <StyledInput>
             <label>{label}</label>
             <input
                 type="text"
-                onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
-                value={inputValue}
+                // onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
+                // value={inputValue}
+                {...register("name")}
             />
         </StyledInput>
     );
