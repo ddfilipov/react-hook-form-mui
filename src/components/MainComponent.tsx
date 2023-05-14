@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { DefaultValues, useForm } from "react-hook-form";
+import { DefaultValues, FormProvider, useForm } from "react-hook-form";
 import { CustomInputText } from "./CustomInputText";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
@@ -23,34 +23,36 @@ const defaultFormValues: DefaultValues<InputValues> = {
 };
 
 export const MainComponent: FC = () => {
-    const { register, handleSubmit, reset } = useForm<InputValues>({ defaultValues: defaultFormValues });
+    const methods = useForm<InputValues>({ defaultValues: defaultFormValues });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
 
     const handleResetForm = () => {
-        reset(defaultFormValues);
+        methods.reset(defaultFormValues);
     };
     return (
         <MainContainer>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <h1>React hook form</h1>
-                <label>Name</label>
-                <input type="text" {...register("name", { required: true, maxLength: 15 })} />
+            <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                    <h1>React hook form</h1>
+                    <label>Name</label>
+                    <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} />
 
-                <label>Age</label>
-                <input type="number" {...register("age")} />
+                    <label>Age</label>
+                    <input type="number" {...methods.register("age")} />
 
-                <label>Are you alive?</label>
-                <input type="checkbox" {...register("isAlive")} />
+                    <label>Are you alive?</label>
+                    <input type="checkbox" {...methods.register("isAlive")} />
 
-                <CustomInputText label="Custom input" />
+                    <CustomInputText label="Custom input" />
 
-                <button type="button" onClick={handleResetForm}>
-                    Reset form values
-                </button>
-                <input type="submit" />
-            </form>
+                    <button type="button" onClick={handleResetForm}>
+                        Reset form values
+                    </button>
+                    <input type="submit" />
+                </form>
+            </FormProvider>
         </MainContainer>
     );
 };
