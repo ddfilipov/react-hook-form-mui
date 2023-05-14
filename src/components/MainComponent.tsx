@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { useForm } from "react-hook-form";
+import { DefaultValues, useForm } from "react-hook-form";
 import { CustomInputText } from "./CustomInputText";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
 
 interface InputValues {
     name: string;
-    age: number;
+    age: number | null;
     isAlive: boolean;
 }
 
@@ -16,13 +16,21 @@ const MainContainer = styled.div`
     padding: 10px;
 `;
 
+const defaultFormValues: DefaultValues<InputValues> = {
+    name: "",
+    age: null,
+    isAlive: true,
+};
+
 export const MainComponent: FC = () => {
-    const { register, handleSubmit } = useForm<InputValues>();
+    const { register, handleSubmit, reset } = useForm<InputValues>({ defaultValues: defaultFormValues });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
 
-    console.log();
+    const handleResetForm = () => {
+        // reset("name");
+    };
     return (
         <MainContainer>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -38,6 +46,9 @@ export const MainComponent: FC = () => {
 
                 <CustomInputText label="Custom input" />
 
+                <button type="button" onClick={handleResetForm}>
+                    Reset
+                </button>
                 <input type="submit" />
             </form>
         </MainContainer>

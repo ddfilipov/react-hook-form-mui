@@ -17,7 +17,7 @@ export const CustomInputText: FC<CustomInputTextProps> = ({ label }) => {
     const handleChangeValue = (val: string) => {
         setInputValue(val);
     };
-    console.log(inputValue);
+    
     return (
         <StyledInput>
             <label>{label}</label>
