@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { DefaultValues, FormProvider, useForm } from "react-hook-form";
+import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
 import { CustomInputText } from "./CustomInputText";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
@@ -45,11 +45,22 @@ export const MainComponent: FC = () => {
                     <label>Are you alive?</label>
                     <input type="checkbox" {...methods.register("isAlive")} />
 
-                    <CustomInputText label="Custom input" />
+                    {/* <CustomInputText label="Custom input" /> */}
 
                     <button type="button" onClick={handleResetForm}>
                         Reset form values
                     </button>
+
+                    <Controller
+                        name="name"
+                        render={({ field: { onChange, onBlur, value, name, ref } }) => (
+                            <CustomInputText
+                                onChange={onChange} // send value to hook form
+                                label="Name"
+                            />
+                        )}
+                    />
+
                     <input type="submit" />
                 </form>
             </FormProvider>
