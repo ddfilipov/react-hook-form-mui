@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 interface CustomInputTextProps {
     label: string;
     onChange: (val: string) => void;
-    // value: string;
+    value: string;
 }
 
 const StyledInput = styled.div`
@@ -16,10 +16,12 @@ const StyledInput = styled.div`
     gap: 5px;
 `;
 
-export const CustomInputText: FC<CustomInputTextProps> = ({ label, onChange}) => {
-    const [inputValue, setInputValue] = useState<string>("");
+export const CustomInputText: FC<CustomInputTextProps> = ({ label, value, onChange }) => {
+    const [inputValue, setInputValue] = useState<string>(value);
+    console.log(inputValue);
     const handleChangeValue = (val: string) => {
         setInputValue(val);
+        onChange(val);
     };
 
     const { register } = useFormContext();
@@ -29,7 +31,7 @@ export const CustomInputText: FC<CustomInputTextProps> = ({ label, onChange}) =>
             <label>{label}</label>
             <input
                 type="text"
-                onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
                 // onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
                 value={inputValue}
                 // {...register("name")}

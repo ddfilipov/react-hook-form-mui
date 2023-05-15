@@ -36,8 +36,8 @@ export const MainComponent: FC = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <h1>React hook form</h1>
-                    <label>Name</label>
-                    <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} />
+                    {/* <label>Name</label>
+                    <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} /> */}
 
                     <label>Age</label>
                     <input type="number" {...methods.register("age")} />
@@ -57,6 +57,7 @@ export const MainComponent: FC = () => {
                             <CustomInputText
                                 onChange={onChange} // send value to hook form
                                 label="Name"
+                                value={value}
                             />
                         )}
                     />
