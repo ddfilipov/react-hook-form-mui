@@ -55,9 +55,10 @@ export const MainComponent: FC = () => {
                         name="name"
                         render={({ field: { onChange, onBlur, value, name, ref } }) => (
                             <CustomInputText
-                                onChange={onChange} // send value to hook form
+                                onChange={onChange}
                                 label="Name"
                                 value={value}
+                                ref={ref}
                             />
                         )}
                     />
