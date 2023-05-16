@@ -28,8 +28,8 @@ export const CustomInputText: FC<CustomInputTextProps> = ({ label, value, onChan
             <label>{label}</label>
             <input
                 type="text"
-                onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
                 // onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
                 value={value}
                 // {...register("name")}
             />
