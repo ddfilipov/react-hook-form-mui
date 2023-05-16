@@ -6,7 +6,6 @@ interface CustomInputTextProps {
     label: string;
     onChange: (val: string) => void;
     value: string;
-    ref: any;
 }
 
 const StyledInput = styled.div`
@@ -17,11 +16,8 @@ const StyledInput = styled.div`
     gap: 5px;
 `;
 
-export const CustomInputText: FC<CustomInputTextProps> = ({ label, value, onChange, ref }) => {
-    const [inputValue, setInputValue] = useState<string>(value);
-    console.log(inputValue);
+export const CustomInputText: FC<CustomInputTextProps> = ({ label, value, onChange }) => {
     const handleChangeValue = (val: string) => {
-        setInputValue(val);
         onChange(val);
     };
 
@@ -34,8 +30,7 @@ export const CustomInputText: FC<CustomInputTextProps> = ({ label, value, onChan
                 type="text"
                 onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
                 // onChange={(e: ChangeEvent<HTMLInputElement>) => handleChangeValue(e.target.value)}
-                value={inputValue}
-                ref={ref}
+                value={value}
                 // {...register("name")}
             />
         </StyledInput>

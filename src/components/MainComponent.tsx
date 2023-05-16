@@ -53,13 +53,8 @@ export const MainComponent: FC = () => {
 
                     <Controller
                         name="name"
-                        render={({ field: { onChange, onBlur, value, name, ref } }) => (
-                            <CustomInputText
-                                onChange={onChange}
-                                label="Name"
-                                value={value}
-                                ref={ref}
-                            />
+                        render={({ field: { onChange, onBlur, value, ref } }) => (
+                            <CustomInputText onChange={onChange} label="Name" value={value} />
                         )}
                     />
 
