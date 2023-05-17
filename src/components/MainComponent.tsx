@@ -3,6 +3,7 @@ import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-for
 import { CustomInputText } from "./CustomInputText";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
+import { FormControl, InputLabel, NativeSelect, Select } from "@mui/material";
 
 interface InputValues {
     name: string;
@@ -58,6 +59,20 @@ export const MainComponent: FC = () => {
                         )}
                     />
 
+                    <FormControl>
+                        <InputLabel variant="standard">Age</InputLabel>
+                        <Select
+                            defaultValue={30}
+                            inputProps={{
+                                name: "age",
+                                id: "uncontrolled-native",
+                            }}
+                        >
+                            <option value={10}>Ten</option>
+                            <option value={20}>Twenty</option>
+                            <option value={30}>Thirty</option>
+                        </Select>
+                    </FormControl>
                     <input type="submit" />
                 </form>
             </FormProvider>
