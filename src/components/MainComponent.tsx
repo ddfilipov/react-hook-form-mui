@@ -4,6 +4,7 @@ import { CustomInputText } from "./CustomInputText";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
 import { FormControl, InputLabel, NativeSelect, Select } from "@mui/material";
+import { CustomMuiSelect } from "./CustomMuiSelect";
 
 interface InputValues {
     name: string;
@@ -58,6 +59,8 @@ export const MainComponent: FC = () => {
                             <CustomInputText onChange={onChange} label="Name" value={value} />
                         )}
                     />
+
+                    <CustomMuiSelect />
 
                     <input type="submit" />
                 </form>
