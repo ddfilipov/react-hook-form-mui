@@ -60,17 +60,17 @@ export const MainComponent: FC = () => {
                     />
 
                     <FormControl>
-                        <InputLabel variant="standard">Age</InputLabel>
+                        <InputLabel>Nationality</InputLabel>
                         <Select
                             defaultValue={30}
                             inputProps={{
-                                name: "age",
+                                name: "nationality",
                                 id: "uncontrolled-native",
                             }}
                         >
-                            <option value={10}>Ten</option>
-                            <option value={20}>Twenty</option>
-                            <option value={30}>Thirty</option>
+                            <option value={"spain"}>Spain</option>
+                            <option value={"usa"}>USA</option>
+                            <option value={"uk"}>UK</option>
                         </Select>
                     </FormControl>
                     <input type="submit" />
