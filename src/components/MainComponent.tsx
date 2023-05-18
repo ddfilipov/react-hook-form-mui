@@ -59,20 +59,6 @@ export const MainComponent: FC = () => {
                         )}
                     />
 
-                    <FormControl>
-                        <InputLabel>Nationality</InputLabel>
-                        <Select
-                            defaultValue={30}
-                            inputProps={{
-                                name: "nationality",
-                                id: "uncontrolled-native",
-                            }}
-                        >
-                            <option value={"spain"}>Spain</option>
-                            <option value={"usa"}>USA</option>
-                            <option value={"uk"}>UK</option>
-                        </Select>
-                    </FormControl>
                     <input type="submit" />
                 </form>
             </FormProvider>
