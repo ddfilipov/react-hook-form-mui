@@ -3,7 +3,7 @@ import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-for
 import { CustomInputText } from "./CustomInputText";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
-import { FormControl, InputLabel, NativeSelect, Select } from "@mui/material";
+import { FormControl, Grid, InputLabel, NativeSelect, Select } from "@mui/material";
 import { CustomMuiSelect } from "./CustomMuiSelect";
 
 interface InputValues {
@@ -37,32 +37,34 @@ export const MainComponent: FC = () => {
         <MainContainer>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                    <h1>React hook form</h1>
-                    {/* <label>Name</label>
+                    <Grid container display={"flex"} flexDirection={"column"}>
+                        <h1>React hook form</h1>
+                        {/* <label>Name</label>
                     <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} /> */}
 
-                    <label>Age</label>
-                    <input type="number" {...methods.register("age")} />
+                        <label>Age</label>
+                        <input type="number" {...methods.register("age")} />
 
-                    <label>Are you alive?</label>
-                    <input type="checkbox" {...methods.register("isAlive")} />
+                        <label>Are you alive?</label>
+                        <input type="checkbox" {...methods.register("isAlive")} />
 
-                    {/* <CustomInputText label="Custom input" /> */}
+                        {/* <CustomInputText label="Custom input" /> */}
 
-                    <button type="button" onClick={handleResetForm}>
-                        Reset form values
-                    </button>
+                        <button type="button" onClick={handleResetForm}>
+                            Reset form values
+                        </button>
 
-                    <Controller
-                        name="name"
-                        render={({ field: { onChange, onBlur, value, ref } }) => (
-                            <CustomInputText onChange={onChange} label="Name" value={value} />
-                        )}
-                    />
+                        <Controller
+                            name="name"
+                            render={({ field: { onChange, onBlur, value, ref } }) => (
+                                <CustomInputText onChange={onChange} label="Name" value={value} />
+                            )}
+                        />
 
-                    <CustomMuiSelect />
+                        <CustomMuiSelect />
 
-                    <input type="submit" />
+                        <input type="submit" />
+                    </Grid>
                 </form>
             </FormProvider>
         </MainContainer>
