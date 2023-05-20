@@ -37,8 +37,8 @@ export const MainComponent: FC = () => {
         <MainContainer>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
+                    <h1>React hook form</h1>
                     <Grid container display={"flex"} flexDirection={"row"}>
-                        <h1>React hook form</h1>
                         {/* <label>Name</label>
                     <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} /> */}
                         <Grid item xs={6}>
@@ -64,8 +64,9 @@ export const MainComponent: FC = () => {
                                 )}
                             />
                         </Grid>
-
-                        <CustomMuiSelect />
+                        <Grid item xs={6}>
+                            <CustomMuiSelect />
+                        </Grid>
 
                         <input type="submit" />
                     </Grid>
