@@ -38,38 +38,37 @@ export const MainComponent: FC = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <h1>React hook form</h1>
-                    <Grid container display={"flex"} flexDirection={"row"}>
+                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"}>
                         {/* <label>Name</label>
                     <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} /> */}
-                        <Grid item xs={6}>
+                        <Grid item xs={2}>
+                            <Controller
+                                name="name"
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomInputText onChange={onChange} label="Name" value={value} />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
                             <label>Age</label>
                             <input type="number" {...methods.register("age")} />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={2}>
                             <label>Are you alive?</label>
                             <input type="checkbox" {...methods.register("isAlive")} />
                         </Grid>
 
-                        <Grid item xs={6}>
+                        <Grid item xs={2}>
                             <button type="button" onClick={handleResetForm}>
                                 Reset form values
                             </button>
                         </Grid>
 
-                        <Grid item xs={6}>
-                            <Controller
-                                name="name"
-                                render={({ field: { onChange, onBlur, value, ref } }) => (
-                                    <CustomInputText onChange={onChange} label="Name" value={value} />
-                                )}
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={2}>
                             <CustomMuiSelect />
                         </Grid>
-
-                        <input type="submit" />
                     </Grid>
+                    <input type="submit" />
                 </form>
             </FormProvider>
         </MainContainer>
