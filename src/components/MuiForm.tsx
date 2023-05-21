@@ -15,7 +15,6 @@ interface InputValues {
 
 const MainContainer = styled.div`
     border: 1px solid white;
-    height: 100vh;
     padding: 10px;
 `;
 
@@ -45,37 +44,8 @@ export const MuiForm: FC = () => {
         <MainContainer>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
-                    <h1>Vanilla inputs</h1>
+                    <h1>React Hook Form + MUI</h1>
                     <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="name"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput onChange={onChange} label="Name" value={value} type="text" />
-                                )}
-                            />
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="age"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput onChange={onChange} label="Age" value={value} type="number" />
-                                )}
-                            />
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="isAlive"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaCheckbox onChange={onChange} label="Are you alive?" value={value} />
-                                )}
-                            />
-                        </Grid>
-                        {/* <Grid item xs={2}>
-                            <label>Are you alive?</label>
-                            <input type="checkbox" {...methods.register("isAlive")} />
-                        </Grid> */}
-
                         <Grid item xs={2}>
                             <CustomMuiSelect />
                         </Grid>

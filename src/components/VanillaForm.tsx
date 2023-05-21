@@ -15,7 +15,6 @@ interface InputValues {
 
 const MainContainer = styled.div`
     border: 1px solid white;
-    height: 100vh;
     padding: 10px;
 `;
 
@@ -41,11 +40,12 @@ export const VanillaForm: FC = () => {
     const handleResetForm = () => {
         methods.reset(defaultFormValues);
     };
+
     return (
         <MainContainer>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
-                    <h1>Vanilla inputs</h1>
+                    <h1>React Hook Form + Vanilla Inputs</h1>
                     <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
                         <Grid item xs={2}>
                             <Controller
@@ -75,19 +75,6 @@ export const VanillaForm: FC = () => {
                             <label>Are you alive?</label>
                             <input type="checkbox" {...methods.register("isAlive")} />
                         </Grid> */}
-
-                        <Grid item xs={2}>
-                            <CustomMuiSelect />
-                        </Grid>
-
-                        <Grid item xs={2}>
-                            <Controller
-                                name={"name"}
-                                render={({ field: { onChange, value } }) => (
-                                    <TextField value={value} onChange={onChange} label="Name" />
-                                )}
-                            />
-                        </Grid>
                     </Grid>
                     <ButtonWrapper>
                         <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
