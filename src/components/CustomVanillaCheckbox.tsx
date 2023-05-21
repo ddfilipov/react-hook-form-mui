@@ -12,6 +12,7 @@ const StyledInput = styled.div`
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 5px;
+    justify-items: center;
 `;
 
 export const CustomVanillaCheckbox: FC<CustomVanillaCheckboxProps> = ({ label, value, onChange }) => {
