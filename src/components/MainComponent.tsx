@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
-import { CustomInputText } from "./CustomInputText";
+import { CustomInput } from "./CustomInput";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
 import { FormControl, Grid, InputLabel, NativeSelect, Select } from "@mui/material";
@@ -45,13 +45,19 @@ export const MainComponent: FC = () => {
                             <Controller
                                 name="name"
                                 render={({ field: { onChange, value } }) => (
-                                    <CustomInputText onChange={onChange} label="Name" value={value} />
+                                    <CustomInput onChange={onChange} label="Name" value={value} type="text" />
                                 )}
                             />
                         </Grid>
                         <Grid item xs={2}>
-                            <label>Age</label>
-                            <input type="number" {...methods.register("age")} />
+                            <Controller
+                                name="age"
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomInput onChange={onChange} label="Age" value={value} type="number" />
+                                )}
+                            />
+                            {/* <label>Age</label>
+                            <input type="number" {...methods.register("age")} /> */}
                         </Grid>
                         <Grid item xs={2}>
                             <label>Are you alive?</label>
