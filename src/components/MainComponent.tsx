@@ -9,7 +9,7 @@ import { CustomVanillaCheckbox } from "./CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
-    age: number | null;
+    age: number | string;
     isAlive: boolean;
 }
 
@@ -21,7 +21,7 @@ const MainContainer = styled.div`
 
 const defaultFormValues: DefaultValues<InputValues> = {
     name: "",
-    age: null,
+    age: "",
     isAlive: true,
 };
 

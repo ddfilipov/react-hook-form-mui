@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { ChangeEvent, FC } from "react";
-import { useFormContext } from "react-hook-form";
 
 interface CustomVanillaCheckboxProps {
     label: string;
@@ -16,9 +15,6 @@ const StyledInput = styled.div`
 `;
 
 export const CustomVanillaCheckbox: FC<CustomVanillaCheckboxProps> = ({ label, value, onChange }) => {
-    console.log(value);
-    const { register } = useFormContext();
-
     return (
         <StyledInput>
             <label>{label}</label>
