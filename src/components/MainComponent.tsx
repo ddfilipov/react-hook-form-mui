@@ -19,6 +19,13 @@ const MainContainer = styled.div`
     padding: 10px;
 `;
 
+const ButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    place-items: baseline;
+`;
+
 const defaultFormValues: DefaultValues<InputValues> = {
     name: "",
     age: "",
@@ -39,7 +46,7 @@ export const MainComponent: FC = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                     <h1>React hook form</h1>
-                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"}>
+                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
                         <Grid item xs={2}>
                             <Controller
                                 name="name"
@@ -70,16 +77,15 @@ export const MainComponent: FC = () => {
                         </Grid> */}
 
                         <Grid item xs={2}>
-                            <button type="button" onClick={handleResetForm}>
-                                Reset form values
-                            </button>
-                        </Grid>
-
-                        <Grid item xs={2}>
                             <CustomMuiSelect />
                         </Grid>
                     </Grid>
-                    <input type="submit" />
+                    <ButtonWrapper>
+                        <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
+                            Reset form values
+                        </button>
+                        <input type="submit" style={{ padding: "5px" }} />
+                    </ButtonWrapper>
                 </form>
             </FormProvider>
         </MainContainer>
