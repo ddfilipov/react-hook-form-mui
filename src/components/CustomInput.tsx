@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ChangeEvent, ChangeEventHandler, FC, HTMLInputTypeAttribute, useState } from "react";
+import { ChangeEvent, FC, HTMLInputTypeAttribute} from "react";
 import { useFormContext } from "react-hook-form";
 
 interface CustomInputProps {
