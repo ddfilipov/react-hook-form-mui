@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
-import { CustomVanillaInput } from "./CustomVanillaInput";
+import { CustomVanillaInput } from "./atoms/CustomVanillaInput";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
 import { Grid, TextField } from "@mui/material";
-import { CustomMuiSelect } from "./CustomMuiSelect";
-import { CustomVanillaCheckbox } from "./CustomVanillaCheckbox";
+import { CustomMuiSelect } from "./atoms/CustomMuiSelect";
+import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
