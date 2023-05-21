@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import "../app/page.module.css";
 import { Grid } from "@mui/material";
 import { CustomMuiSelect } from "./CustomMuiSelect";
+import { CustomVanillaCheckbox } from "./CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
@@ -57,13 +58,9 @@ export const MainComponent: FC = () => {
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
-                                name="checkbox"
+                                name="isAlive"
                                 render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput
-                                        onChange={onChange}
-                                        label="Are you alive?"
-                                        value={value}
-                                    />
+                                    <CustomVanillaCheckbox onChange={onChange} label="Are you alive?" value={value} />
                                 )}
                             />
                         </Grid>
