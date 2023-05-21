@@ -13,7 +13,6 @@ const StyledInput = styled.div`
     max-width: 300px;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    padding: 10px;
     gap: 5px;
 `;
 

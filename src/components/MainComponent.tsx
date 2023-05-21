@@ -36,7 +36,7 @@ export const MainComponent: FC = () => {
     return (
         <MainContainer>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                     <h1>React hook form</h1>
                     <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"}>
                         {/* <label>Name</label>
@@ -56,8 +56,6 @@ export const MainComponent: FC = () => {
                                     <CustomInput onChange={onChange} label="Age" value={value} type="number" />
                                 )}
                             />
-                            {/* <label>Age</label>
-                            <input type="number" {...methods.register("age")} /> */}
                         </Grid>
                         <Grid item xs={2}>
                             <label>Are you alive?</label>
