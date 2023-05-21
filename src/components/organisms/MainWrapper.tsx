@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import "../app/page.module.css";
+import "../../app/page.module.css";
 import { VanillaForm } from "../VanillaForm";
 import { MuiForm } from "../MuiForm";
 
