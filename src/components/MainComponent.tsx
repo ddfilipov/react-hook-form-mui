@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
-import { CustomInput } from "./CustomInput";
+import { CustomVanillaInput } from "./CustomVanillaInput";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
-import { Grid} from "@mui/material";
+import { Grid } from "@mui/material";
 import { CustomMuiSelect } from "./CustomMuiSelect";
 
 interface InputValues {
@@ -39,13 +39,11 @@ export const MainComponent: FC = () => {
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                     <h1>React hook form</h1>
                     <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"}>
-                        {/* <label>Name</label>
-                    <input type="text" {...methods.register("name", { required: true, maxLength: 15 })} /> */}
                         <Grid item xs={2}>
                             <Controller
                                 name="name"
                                 render={({ field: { onChange, value } }) => (
-                                    <CustomInput onChange={onChange} label="Name" value={value} type="text" />
+                                    <CustomVanillaInput onChange={onChange} label="Name" value={value} type="text" />
                                 )}
                             />
                         </Grid>
@@ -53,14 +51,26 @@ export const MainComponent: FC = () => {
                             <Controller
                                 name="age"
                                 render={({ field: { onChange, value } }) => (
-                                    <CustomInput onChange={onChange} label="Age" value={value} type="number" />
+                                    <CustomVanillaInput onChange={onChange} label="Age" value={value} type="number" />
                                 )}
                             />
                         </Grid>
                         <Grid item xs={2}>
+                            <Controller
+                                name="checkbox"
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomVanillaInput
+                                        onChange={onChange}
+                                        label="Are you alive?"
+                                        value={value}
+                                    />
+                                )}
+                            />
+                        </Grid>
+                        {/* <Grid item xs={2}>
                             <label>Are you alive?</label>
                             <input type="checkbox" {...methods.register("isAlive")} />
-                        </Grid>
+                        </Grid> */}
 
                         <Grid item xs={2}>
                             <button type="button" onClick={handleResetForm}>

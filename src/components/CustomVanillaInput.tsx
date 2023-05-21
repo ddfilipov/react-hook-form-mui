@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { ChangeEvent, FC, HTMLInputTypeAttribute} from "react";
+import { ChangeEvent, FC } from "react";
 import { useFormContext } from "react-hook-form";
 
-interface CustomInputProps {
+interface CustomVanillaInputProps {
     label: string;
     onChange: (val: string) => void;
     value: string;
-    type?: HTMLInputTypeAttribute | undefined;
+    type?: "text" | "number" | undefined;
 }
 
 const StyledInput = styled.div`
@@ -16,7 +16,7 @@ const StyledInput = styled.div`
     gap: 5px;
 `;
 
-export const CustomInput: FC<CustomInputProps> = ({ label, value, onChange, type = "text" }) => {
+export const CustomVanillaInput: FC<CustomVanillaInputProps> = ({ label, value, onChange, type = "text" }) => {
     const handleChangeValue = (val: string) => {
         onChange(val);
     };
