@@ -3,14 +3,13 @@ import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-for
 import { CustomVanillaInput } from "./atoms/CustomVanillaInput";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
-import { Grid, TextField } from "@mui/material";
-import { CustomMuiSelect } from "./atoms/CustomMuiSelect";
+import { Grid } from "@mui/material";
 import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
     age: number | string;
-    isAlive: boolean;
+    isHappy: boolean;
 }
 
 const MainContainer = styled.div`
@@ -28,7 +27,7 @@ const ButtonWrapper = styled.div`
 const defaultFormValues: DefaultValues<InputValues> = {
     name: "",
     age: "",
-    isAlive: true,
+    isHappy: true,
 };
 
 export const VanillaFormRhf: FC = () => {
@@ -65,9 +64,9 @@ export const VanillaFormRhf: FC = () => {
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
-                                name="isAlive"
+                                name="isHappy"
                                 render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaCheckbox onChange={onChange} label="Are you alive?" value={value} />
+                                    <CustomVanillaCheckbox onChange={onChange} label="Are you happy?" value={value} />
                                 )}
                             />
                         </Grid>

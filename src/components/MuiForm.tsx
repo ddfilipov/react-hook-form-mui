@@ -10,7 +10,7 @@ import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
 interface InputValues {
     name: string;
     age: number | string;
-    isAlive: boolean;
+    isHappy: boolean;
 }
 
 const MainContainer = styled.div`
@@ -28,7 +28,7 @@ const ButtonWrapper = styled.div`
 const defaultFormValues: DefaultValues<InputValues> = {
     name: "",
     age: "",
-    isAlive: true,
+    isHappy: true,
 };
 
 export const MuiForm: FC = () => {

@@ -9,7 +9,7 @@ import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
 interface InputValues {
     name: string;
     age: number | string;
-    isAlive: boolean;
+    isHappy: boolean;
 }
 
 const MainContainer = styled.div`
@@ -27,7 +27,7 @@ const ButtonWrapper = styled.div`
 const defaultFormValues: DefaultValues<InputValues> = {
     name: "",
     age: "",
-    isAlive: true,
+    isHappy: true,
 };
 
 export const VanillaFormCustomRhf: FC = () => {
@@ -71,9 +71,9 @@ export const VanillaFormCustomRhf: FC = () => {
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
-                                name="isAlive"
+                                name="isHappy"
                                 render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaCheckbox onChange={onChange} label="Are you alive?" value={value} />
+                                    <CustomVanillaCheckbox onChange={onChange} label="Are you happy?" value={value} />
                                 )}
                             />
                         </Grid>
