@@ -45,7 +45,14 @@ export const VanillaFormCustomRhf: FC = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                     <h1>React Hook Form + Custom Vanilla Inputs</h1>
-                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
+                    <Grid
+                        container
+                        display={"flex"}
+                        flexDirection={"row"}
+                        alignItems={"center"}
+                        gap={"10px"}
+                        marginBottom={"10px"}
+                    >
                         <Grid item xs={2}>
                             <Controller
                                 name="name"
