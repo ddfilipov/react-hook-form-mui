@@ -1,5 +1,5 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { FC, useState } from "react";
+import { Box, InputLabel, MenuItem, Select } from "@mui/material";
+import { FC } from "react";
 
 interface CustomInputTextProps {
     onChange: (val: any) => void;
@@ -10,9 +10,9 @@ export type TCountries = "spain" | "usa" | "uk";
 
 export const CustomMuiSelect: FC<CustomInputTextProps> = ({ onChange, value }) => {
     return (
-        <Box sx={{ minWidth: 1500 }}>
+        <Box>
             <InputLabel>Nationality</InputLabel>
-            <Select value={value} defaultValue="spain" onChange={onChange}>
+            <Select value={value} defaultValue="spain" onChange={onChange} sx={{ minWidth: "250px" }}>
                 <MenuItem value={"spain"}>Spain</MenuItem>
                 <MenuItem value={"usa"}>USA</MenuItem>
                 <MenuItem value={"uk"}>UK</MenuItem>

@@ -43,7 +43,14 @@ export const MuiForm: FC = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                     <h1>React Hook Form + MUI</h1>
-                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
+                    <Grid
+                        container
+                        display={"flex"}
+                        flexDirection={"row"}
+                        alignItems={"self-end"}
+                        gap={"10px"}
+                        marginBottom={"10px"}
+                    >
                         <Grid item xs={2}>
                             <Controller
                                 name={"name"}
@@ -61,6 +68,7 @@ export const MuiForm: FC = () => {
                                 )}
                             />
                         </Grid>
+
                         <FormControlLabel
                             control={
                                 <Controller
@@ -71,6 +79,7 @@ export const MuiForm: FC = () => {
                                 />
                             }
                             label="Are you happy?"
+                            labelPlacement="top"
                         />
                     </Grid>
                     <ButtonWrapper>
