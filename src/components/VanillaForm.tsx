@@ -1,5 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
-import { CustomVanillaInput } from "./atoms/CustomVanillaInput";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
 import { Grid } from "@mui/material";
@@ -7,8 +6,14 @@ import { Grid } from "@mui/material";
 interface InputValues {
     name: string;
     age: number | string;
-    isAlive: boolean;
+    isHappy: boolean;
 }
+
+const defaultFormValues: InputValues = {
+    name: "",
+    age: "",
+    isHappy: true,
+};
 
 const MainContainer = styled.div`
     border: 1px solid white;
@@ -22,76 +27,61 @@ const ButtonWrapper = styled.div`
     place-items: baseline;
 `;
 
-const defaultFormValues: InputValues = {
-    name: "",
-    age: "",
-    isAlive: true,
-};
-
 const StyledInput = styled.div`
     max-width: 300px;
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 5px;
 `;
-
 export const VanillaForm: FC = () => {
-    const [name, setName] = useState<string>("");
-    const [age, setAge] = useState<number | null>(null);
-    const [isHappy, setIsHappy] = useState<boolean>(true);
+    const [formData, setFormData] = useState<InputValues>(defaultFormValues);
 
-    const handleName = (val: string) => {
-        setName(val);
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value, checked, type } = event.target;
+        setFormData({ ...formData, [name]: type !== "checkbox" ? value : checked });
     };
 
-    const handleAge = (val: number) => {
-        setAge(val);
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        window.alert(JSON.stringify(formData));
     };
 
-    const handleIsHappy = (val: boolean) => {
-        setIsHappy(val);
+    const handleResetForm = () => {
+        setFormData(defaultFormValues);
     };
-    const handleSubmit = (data: InputValues) => {
-        window.alert(JSON.stringify(data));
-    };
-
-    const handleResetForm = () => {};
 
     return (
         <MainContainer>
-            <form style={{ padding: "10px" }}>
+            <form style={{ padding: "10px" }} onSubmit={handleSubmit}>
                 <h1>Vanilla Form + Vanilla Inputs</h1>
                 <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
                     <Grid item xs={2}>
                         <StyledInput>
                             <label>Name</label>
-                            <input
-                                type="text"
-                                onChange={(e: ChangeEvent<HTMLInputElement>) => handleName(e.target.value)}
-                                value={name}
-                                // {...register("name")}
-                            />
+                            <input type="text" name="name" onChange={handleInputChange} value={formData.name} />
                         </StyledInput>
                     </Grid>
                     <Grid item xs={2}>
                         <StyledInput>
                             <label>Age</label>
-                            <input
-                                type="number"
-                                onChange={(e: ChangeEvent<HTMLInputElement>) => handleAge(Number(e.target.value))}
-                                value={age}
-                            />
+                            <input type="number" name="age" onChange={handleInputChange} value={formData.age} />
                         </StyledInput>
                     </Grid>
-                    <Grid item xs={2}>
-                        <label>Are you happy?</label>
-                        <input
-                            type="checkbox"
-                            value={isHappy.toString()}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                                handleIsHappy(e.target.checked);
+                    <Grid item xs={2} justifySelf={"center"}>
+                        <StyledInput
+                            style={{
+                                justifyItems: "center",
                             }}
-                        />
+                        >
+                            <label>Are you happy?</label>
+                            <input
+                                type="checkbox"
+                                name="isHappy"
+                                defaultChecked={true}
+                                value={formData.isHappy.toString()}
+                                onChange={handleInputChange}
+                            />
+                        </StyledInput>
                     </Grid>
                 </Grid>
                 <ButtonWrapper>
