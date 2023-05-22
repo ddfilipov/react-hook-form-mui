@@ -1,11 +1,8 @@
-import { FC } from "react";
-import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
+import { ChangeEvent, FC, useState } from "react";
 import { CustomVanillaInput } from "./atoms/CustomVanillaInput";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
-import { Grid, TextField } from "@mui/material";
-import { CustomMuiSelect } from "./atoms/CustomMuiSelect";
-import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
+import { Grid } from "@mui/material";
 
 interface InputValues {
     name: string;
@@ -25,65 +22,85 @@ const ButtonWrapper = styled.div`
     place-items: baseline;
 `;
 
-const defaultFormValues: DefaultValues<InputValues> = {
+const defaultFormValues: InputValues = {
     name: "",
     age: "",
     isAlive: true,
 };
 
+const StyledInput = styled.div`
+    max-width: 300px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+`;
+
 export const VanillaForm: FC = () => {
-    const methods = useForm<InputValues>({ defaultValues: defaultFormValues });
-    const onSubmit = (data: InputValues) => {
+    const [name, setName] = useState<string>("");
+    const [age, setAge] = useState<number | null>(null);
+    const [isHappy, setIsHappy] = useState<boolean>(true);
+
+    const handleName = (val: string) => {
+        setName(val);
+    };
+
+    const handleAge = (val: number) => {
+        setAge(val);
+    };
+
+    const handleIsHappy = (val: boolean) => {
+        setIsHappy(val);
+    };
+    const handleSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
 
-    const handleResetForm = () => {
-        methods.reset(defaultFormValues);
-    };
+    const handleResetForm = () => {};
 
     return (
         <MainContainer>
-            <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
-                    <h1>React Hook Form + Vanilla Inputs</h1>
-                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="name"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput onChange={onChange} label="Name" value={value} type="text" />
-                                )}
+            <form style={{ padding: "10px" }}>
+                <h1>Vanilla Form + Vanilla Inputs</h1>
+                <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
+                    <Grid item xs={2}>
+                        <StyledInput>
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => handleName(e.target.value)}
+                                value={name}
+                                // {...register("name")}
                             />
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="age"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput onChange={onChange} label="Age" value={value} type="number" />
-                                )}
-                            />
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="isAlive"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaCheckbox onChange={onChange} label="Are you alive?" value={value} />
-                                )}
-                            />
-                        </Grid>
-                        {/* <Grid item xs={2}>
-                            <label>Are you alive?</label>
-                            <input type="checkbox" {...methods.register("isAlive")} />
-                        </Grid> */}
+                        </StyledInput>
                     </Grid>
-                    <ButtonWrapper>
-                        <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
-                            Reset form values
-                        </button>
-                        <input type="submit" style={{ padding: "5px" }} />
-                    </ButtonWrapper>
-                </form>
-            </FormProvider>
+                    <Grid item xs={2}>
+                        <StyledInput>
+                            <label>Age</label>
+                            <input
+                                type="number"
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => handleAge(Number(e.target.value))}
+                                value={age}
+                            />
+                        </StyledInput>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <label>Are you happy?</label>
+                        <input
+                            type="checkbox"
+                            value={isHappy.toString()}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                handleIsHappy(e.target.checked);
+                            }}
+                        />
+                    </Grid>
+                </Grid>
+                <ButtonWrapper>
+                    <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
+                        Reset form values
+                    </button>
+                    <input type="submit" style={{ padding: "5px" }} />
+                </ButtonWrapper>
+            </form>
         </MainContainer>
     );
 };
