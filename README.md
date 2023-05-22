@@ -9,6 +9,7 @@ Topics seen:
 -   reset
 -   control
 -   Controller
+-   reValidateMode
 -   ErrorMessage
     npm install @hookform/error-message
 

@@ -44,7 +44,7 @@ export const VanillaFormRhf: FC = () => {
         reset,
         handleSubmit,
         formState: { errors },
-    } = useForm<InputValues>({ defaultValues: defaultFormValues });
+    } = useForm<InputValues>({ defaultValues: defaultFormValues, mode: "onSubmit", reValidateMode: "onSubmit" });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
@@ -75,7 +75,6 @@ export const VanillaFormRhf: FC = () => {
                                 name="name"
                                 render={({ message }) => <p style={{ color: "#86082a" }}>{message}</p>}
                             />
-                            {/* {errors.name ? <ErrorMessage errors={errors.name.message} name="name" /> : null} */}
                         </StyledInput>
                     </Grid>
                     <Grid item>
