@@ -10,6 +10,7 @@ Topics seen:
 -   control
 -   Controller
 -   ErrorMessage
+    npm install @hookform/error-message
 
 ## Useful info
 

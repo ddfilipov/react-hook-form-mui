@@ -3,6 +3,7 @@ import { DefaultValues, useForm } from "react-hook-form";
 import styled from "@emotion/styled";
 import "../../app/page.module.css";
 import { Grid } from "@mui/material";
+import { ErrorMessage } from "@hookform/error-message";
 
 interface InputValues {
     name: string;
@@ -31,12 +32,19 @@ const defaultFormValues: DefaultValues<InputValues> = {
 const StyledInput = styled.div`
     max-width: 300px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: repeat(1fr, 3);
+    align-self: flex-start;
+    align-items: baseline;
     gap: 5px;
 `;
 
 export const VanillaFormRhf: FC = () => {
-    const { register, reset, handleSubmit } = useForm<InputValues>({ defaultValues: defaultFormValues });
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<InputValues>({ defaultValues: defaultFormValues });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
@@ -44,7 +52,7 @@ export const VanillaFormRhf: FC = () => {
     const handleResetForm = () => {
         reset(defaultFormValues);
     };
-    
+
     return (
         <MainContainer>
             <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "10px" }}>
@@ -53,7 +61,7 @@ export const VanillaFormRhf: FC = () => {
                     container
                     display={"flex"}
                     flexDirection={"row"}
-                    alignItems={"center"}
+                    alignItems={"baseline"}
                     flexWrap={"wrap"}
                     gap={"10px"}
                     marginBottom={"10px"}
@@ -61,13 +69,24 @@ export const VanillaFormRhf: FC = () => {
                     <Grid item>
                         <StyledInput>
                             <label>Name</label>
-                            <input type="text" {...register("name")} />
+                            <input type="text" {...register("name", { required: "Name is required" })} />
+                            <ErrorMessage
+                                errors={errors}
+                                name="name"
+                                render={({ message }) => <p style={{ color: "#86082a" }}>{message}</p>}
+                            />
+                            {/* {errors.name ? <ErrorMessage errors={errors.name.message} name="name" /> : null} */}
                         </StyledInput>
                     </Grid>
                     <Grid item>
                         <StyledInput>
                             <label>Age</label>
-                            <input type="number" {...register("age")} />
+                            <input type="number" {...register("age", { required: "Age is required" })} />
+                            <ErrorMessage
+                                errors={errors}
+                                name="age"
+                                render={({ message }) => <p style={{ color: "#86082a" }}>{message}</p>}
+                            />
                         </StyledInput>
                     </Grid>
                     <Grid item justifySelf={"center"}>
@@ -77,7 +96,15 @@ export const VanillaFormRhf: FC = () => {
                             }}
                         >
                             <label>Are you happy?</label>
-                            <input type="checkbox" {...register("isHappy")} />
+                            <input
+                                type="checkbox"
+                                {...register("isHappy", { validate: (val) => val === false && "Be happy :)" })}
+                            />
+                            <ErrorMessage
+                                errors={errors}
+                                name="isHappy"
+                                render={({ message }) => <p style={{ color: "#86082a" }}>{message}</p>}
+                            />
                         </StyledInput>
                     </Grid>
                 </Grid>
