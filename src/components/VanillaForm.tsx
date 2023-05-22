@@ -54,7 +54,14 @@ export const VanillaForm: FC = () => {
         <MainContainer>
             <form style={{ padding: "10px" }} onSubmit={handleSubmit}>
                 <h1>Vanilla Form + Vanilla Inputs</h1>
-                <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
+                <Grid
+                    container
+                    display={"flex"}
+                    flexDirection={"row"}
+                    alignItems={"center"}
+                    gap={"10px"}
+                    marginBottom={"10px"}
+                >
                     <Grid item xs={2}>
                         <StyledInput>
                             <label>Name</label>
@@ -70,20 +77,20 @@ export const VanillaForm: FC = () => {
                     <Grid item xs={2} justifySelf={"center"}>
                         <StyledInput
                             style={{
-                                justifyItems: "center",
+                                justifyContent: "start",
                             }}
                         >
                             <label>Are you happy?</label>
                             <input
                                 type="checkbox"
                                 name="isHappy"
-                                defaultChecked={true}
-                                value={formData.isHappy.toString()}
+                                checked={formData.isHappy}
                                 onChange={handleInputChange}
                             />
                         </StyledInput>
                     </Grid>
                 </Grid>
+
                 <ButtonWrapper>
                     <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
                         Reset form values
