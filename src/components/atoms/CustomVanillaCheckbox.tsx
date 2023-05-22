@@ -4,7 +4,7 @@ import { ChangeEvent, FC } from "react";
 interface CustomVanillaCheckboxProps {
     label: string;
     onChange: (val: boolean) => void;
-    value: string;
+    value: boolean;
 }
 
 const StyledInput = styled.div`
@@ -23,7 +23,7 @@ export const CustomVanillaCheckbox: FC<CustomVanillaCheckboxProps> = ({ label, v
                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
                     onChange(e.target.checked);
                 }}
-                value={value}
+                checked={value}
                 type="checkbox"
             />
         </StyledInput>
