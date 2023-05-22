@@ -18,9 +18,9 @@ export const MainComponent: FC = () => {
     return (
         <MainContainer>
             <VanillaForm />
+            <VanillaFormRhf />
             <VanillaFormCustomRhf />
             {/* <MuiForm /> */}
-            <VanillaFormRhf />
         </MainContainer>
     );
 };
