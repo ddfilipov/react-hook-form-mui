@@ -1,11 +1,10 @@
 import { FC } from "react";
 import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
-import { CustomVanillaInput } from "./atoms/CustomVanillaInput";
+import { CustomVanillaInput } from "../atoms/CustomVanillaInput";
 import styled from "@emotion/styled";
-import "../app/page.module.css";
-import { Grid, TextField } from "@mui/material";
-import { CustomMuiSelect } from "./atoms/CustomMuiSelect";
-import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
+import "../../app/page.module.css";
+import { Grid } from "@mui/material";
+import { CustomVanillaCheckbox } from "../atoms/CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
@@ -31,7 +30,7 @@ const defaultFormValues: DefaultValues<InputValues> = {
     isHappy: true,
 };
 
-export const MuiForm: FC = () => {
+export const VanillaFormCustomRhf: FC = () => {
     const methods = useForm<InputValues>({ defaultValues: defaultFormValues });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
@@ -40,21 +39,41 @@ export const MuiForm: FC = () => {
     const handleResetForm = () => {
         methods.reset(defaultFormValues);
     };
+
     return (
         <MainContainer>
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
-                    <h1>React Hook Form + MUI</h1>
-                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
-                        <Grid item xs={2}>
-                            <CustomMuiSelect />
-                        </Grid>
-
+                    <h1>React Hook Form + Custom Vanilla Inputs</h1>
+                    <Grid
+                        container
+                        display={"flex"}
+                        flexDirection={"row"}
+                        alignItems={"center"}
+                        gap={"10px"}
+                        marginBottom={"10px"}
+                    >
                         <Grid item xs={2}>
                             <Controller
-                                name={"name"}
+                                name="name"
                                 render={({ field: { onChange, value } }) => (
-                                    <TextField value={value} onChange={onChange} label="Name" />
+                                    <CustomVanillaInput onChange={onChange} label="Name" value={value} type="text" />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Controller
+                                name="age"
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomVanillaInput onChange={onChange} label="Age" value={value} type="number" />
+                                )}
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Controller
+                                name="isHappy"
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomVanillaCheckbox onChange={onChange} label="Are you happy?" value={value} />
                                 )}
                             />
                         </Grid>

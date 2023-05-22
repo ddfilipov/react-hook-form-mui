@@ -1,9 +1,8 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
 import "../../app/page.module.css";
-import { VanillaForm } from "../VanillaForm";
-import { MuiForm } from "../MuiForm";
-import { VanillaFormCustomRhf } from "../VanillaFormCustomRhf";
+import { VanillaForm } from "./VanillaForm";
+import { VanillaFormCustomRhf } from "./VanillaFormCustomRhf";
 
 const MainContainer = styled.div`
     border: 1px solid white;

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
-import { CustomVanillaInput } from "./atoms/CustomVanillaInput";
+import { CustomVanillaInput } from "../atoms/CustomVanillaInput";
 import styled from "@emotion/styled";
 import "../app/page.module.css";
 import { Grid } from "@mui/material";
-import { CustomVanillaCheckbox } from "./atoms/CustomVanillaCheckbox";
+import { CustomVanillaCheckbox } from "../atoms/CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
@@ -30,7 +30,7 @@ const defaultFormValues: DefaultValues<InputValues> = {
     isHappy: true,
 };
 
-export const VanillaFormCustomRhf: FC = () => {
+export const VanillaFormRhf: FC = () => {
     const methods = useForm<InputValues>({ defaultValues: defaultFormValues });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
@@ -45,14 +45,7 @@ export const VanillaFormCustomRhf: FC = () => {
             <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                     <h1>React Hook Form + Custom Vanilla Inputs</h1>
-                    <Grid
-                        container
-                        display={"flex"}
-                        flexDirection={"row"}
-                        alignItems={"center"}
-                        gap={"10px"}
-                        marginBottom={"10px"}
-                    >
+                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
                         <Grid item xs={2}>
                             <Controller
                                 name="name"

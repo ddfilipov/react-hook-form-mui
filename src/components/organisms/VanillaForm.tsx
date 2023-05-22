@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import styled from "@emotion/styled";
-import "../app/page.module.css";
+import "../../app/page.module.css";
 import { Grid } from "@mui/material";
 
 interface InputValues {
