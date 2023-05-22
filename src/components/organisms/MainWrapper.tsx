@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import "../../app/page.module.css";
 import { VanillaForm } from "./VanillaForm";
 import { VanillaFormCustomRhf } from "./VanillaFormCustomRhf";
+import { VanillaFormRhf } from "./VanillaFormRhf";
 
 const MainContainer = styled.div`
     border: 1px solid white;
@@ -19,6 +20,7 @@ export const MainComponent: FC = () => {
             <VanillaForm />
             <VanillaFormCustomRhf />
             {/* <MuiForm /> */}
+            <VanillaFormRhf />
         </MainContainer>
     );
 };

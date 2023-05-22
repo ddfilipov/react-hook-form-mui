@@ -1,10 +1,8 @@
 import { FC } from "react";
-import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
-import { CustomVanillaInput } from "../atoms/CustomVanillaInput";
+import { DefaultValues, useForm } from "react-hook-form";
 import styled from "@emotion/styled";
-import "../app/page.module.css";
+import "../../app/page.module.css";
 import { Grid } from "@mui/material";
-import { CustomVanillaCheckbox } from "../atoms/CustomVanillaCheckbox";
 
 interface InputValues {
     name: string;
@@ -30,55 +28,58 @@ const defaultFormValues: DefaultValues<InputValues> = {
     isHappy: true,
 };
 
+const StyledInput = styled.div`
+    max-width: 300px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+`;
+
 export const VanillaFormRhf: FC = () => {
-    const methods = useForm<InputValues>({ defaultValues: defaultFormValues });
+    const { register, reset, handleSubmit } = useForm<InputValues>({ defaultValues: defaultFormValues });
     const onSubmit = (data: InputValues) => {
         window.alert(JSON.stringify(data));
     };
 
     const handleResetForm = () => {
-        methods.reset(defaultFormValues);
+        reset(defaultFormValues);
     };
 
     return (
         <MainContainer>
-            <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)} style={{ padding: "10px" }}>
-                    <h1>React Hook Form + Custom Vanilla Inputs</h1>
-                    <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="name"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput onChange={onChange} label="Name" value={value} type="text" />
-                                )}
-                            />
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="age"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaInput onChange={onChange} label="Age" value={value} type="number" />
-                                )}
-                            />
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Controller
-                                name="isHappy"
-                                render={({ field: { onChange, value } }) => (
-                                    <CustomVanillaCheckbox onChange={onChange} label="Are you happy?" value={value} />
-                                )}
-                            />
-                        </Grid>
+            <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "10px" }}>
+                <h1>React Hook Form + Vanilla Inputs</h1>
+                <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
+                    <Grid item xs={2}>
+                        <StyledInput>
+                            <label>Name</label>
+                            <input type="text" {...register("name")} />
+                        </StyledInput>
                     </Grid>
-                    <ButtonWrapper>
-                        <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
-                            Reset form values
-                        </button>
-                        <input type="submit" style={{ padding: "5px" }} />
-                    </ButtonWrapper>
-                </form>
-            </FormProvider>
+                    <Grid item xs={2}>
+                        <StyledInput>
+                            <label>Age</label>
+                            <input type="number" {...register("age")} />
+                        </StyledInput>
+                    </Grid>
+                    <Grid item xs={2} justifySelf={"center"}>
+                        <StyledInput
+                            style={{
+                                justifyContent: "start",
+                            }}
+                        >
+                            <label>Are you happy?</label>
+                            <input type="checkbox" {...register("isHappy")} />
+                        </StyledInput>
+                    </Grid>
+                </Grid>
+                <ButtonWrapper>
+                    <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
+                        Reset form values
+                    </button>
+                    <input type="submit" style={{ padding: "5px" }} />
+                </ButtonWrapper>
+            </form>
         </MainContainer>
     );
 };
