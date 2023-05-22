@@ -4,6 +4,7 @@ import "../../app/page.module.css";
 import { VanillaForm } from "./VanillaForm";
 import { VanillaFormCustomRhf } from "./VanillaFormCustomRhf";
 import { VanillaFormRhf } from "./VanillaFormRhf";
+import { MuiForm } from "./MuiForm";
 
 const MainContainer = styled.div`
     border: 1px solid white;
@@ -20,7 +21,7 @@ export const MainComponent: FC = () => {
             <VanillaForm />
             <VanillaFormRhf />
             <VanillaFormCustomRhf />
-            {/* <MuiForm /> */}
+            <MuiForm />
         </MainContainer>
     );
 };

@@ -2,13 +2,13 @@ import { FC } from "react";
 import { Controller, DefaultValues, FormProvider, useForm } from "react-hook-form";
 import styled from "@emotion/styled";
 import "../../app/page.module.css";
-import { Grid, TextField } from "@mui/material";
-import { CustomMuiSelect } from "../atoms/CustomMuiSelect";
+import { FormControlLabel, Grid, Switch, TextField } from "@mui/material";
+import { CustomMuiSelect, TCountries } from "../atoms/CustomMuiSelect";
 
 interface InputValues {
     name: string;
-    age: number | string;
     isHappy: boolean;
+    nationality: TCountries;
 }
 
 const MainContainer = styled.div`
@@ -25,7 +25,7 @@ const ButtonWrapper = styled.div`
 
 const defaultFormValues: DefaultValues<InputValues> = {
     name: "",
-    age: "",
+    nationality: "spain",
     isHappy: true,
 };
 
@@ -45,10 +45,6 @@ export const MuiForm: FC = () => {
                     <h1>React Hook Form + MUI</h1>
                     <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
                         <Grid item xs={2}>
-                            <CustomMuiSelect />
-                        </Grid>
-
-                        <Grid item xs={2}>
                             <Controller
                                 name={"name"}
                                 render={({ field: { onChange, value } }) => (
@@ -56,6 +52,26 @@ export const MuiForm: FC = () => {
                                 )}
                             />
                         </Grid>
+
+                        <Grid item xs={2}>
+                            <Controller
+                                name={"nationality"}
+                                render={({ field: { value, onChange } }) => (
+                                    <CustomMuiSelect value={value} onChange={onChange} />
+                                )}
+                            />
+                        </Grid>
+                        <FormControlLabel
+                            control={
+                                <Controller
+                                    name={"isHappy"}
+                                    render={({ field: { onChange, value } }) => (
+                                        <Switch checked={value} onChange={onChange} />
+                                    )}
+                                />
+                            }
+                            label="Are you happy?"
+                        />
                     </Grid>
                     <ButtonWrapper>
                         <button type="button" onClick={handleResetForm} style={{ padding: "5px" }}>
