@@ -44,7 +44,7 @@ export const VanillaFormRhf: FC = () => {
     const handleResetForm = () => {
         reset(defaultFormValues);
     };
-
+    
     return (
         <MainContainer>
             <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "10px" }}>
