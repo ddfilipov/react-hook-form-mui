@@ -47,11 +47,12 @@ export const MuiForm: FC = () => {
                         container
                         display={"flex"}
                         flexDirection={"row"}
+                        flexWrap={"wrap"}
                         alignItems={"self-end"}
                         gap={"10px"}
                         marginBottom={"10px"}
                     >
-                        <Grid item xs={2}>
+                        <Grid item>
                             <Controller
                                 name={"name"}
                                 render={({ field: { onChange, value } }) => (
@@ -60,7 +61,7 @@ export const MuiForm: FC = () => {
                             />
                         </Grid>
 
-                        <Grid item xs={2}>
+                        <Grid item>
                             <Controller
                                 name={"nationality"}
                                 render={({ field: { value, onChange } }) => (

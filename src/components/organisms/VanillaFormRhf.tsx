@@ -54,22 +54,23 @@ export const VanillaFormRhf: FC = () => {
                     display={"flex"}
                     flexDirection={"row"}
                     alignItems={"center"}
+                    flexWrap={"wrap"}
                     gap={"10px"}
                     marginBottom={"10px"}
                 >
-                    <Grid item xs={2}>
+                    <Grid item>
                         <StyledInput>
                             <label>Name</label>
                             <input type="text" {...register("name")} />
                         </StyledInput>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item>
                         <StyledInput>
                             <label>Age</label>
                             <input type="number" {...register("age")} />
                         </StyledInput>
                     </Grid>
-                    <Grid item xs={2} justifySelf={"center"}>
+                    <Grid item justifySelf={"center"}>
                         <StyledInput
                             style={{
                                 justifyContent: "start",

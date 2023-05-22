@@ -49,11 +49,12 @@ export const VanillaFormCustomRhf: FC = () => {
                         container
                         display={"flex"}
                         flexDirection={"row"}
+                        flexWrap={"wrap"}
                         alignItems={"center"}
                         gap={"10px"}
                         marginBottom={"10px"}
                     >
-                        <Grid item xs={2}>
+                        <Grid item>
                             <Controller
                                 name="name"
                                 render={({ field: { onChange, value } }) => (
@@ -61,7 +62,7 @@ export const VanillaFormCustomRhf: FC = () => {
                                 )}
                             />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item>
                             <Controller
                                 name="age"
                                 render={({ field: { onChange, value } }) => (
@@ -69,7 +70,7 @@ export const VanillaFormCustomRhf: FC = () => {
                                 )}
                             />
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item>
                             <Controller
                                 name="isHappy"
                                 render={({ field: { onChange, value } }) => (

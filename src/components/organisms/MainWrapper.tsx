@@ -7,7 +7,6 @@ import { VanillaFormRhf } from "./VanillaFormRhf";
 import { MuiForm } from "./MuiForm";
 
 const MainContainer = styled.div`
-    border: 1px solid white;
     height: 100vh;
     padding: 10px;
     display: flex;

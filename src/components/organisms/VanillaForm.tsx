@@ -58,23 +58,24 @@ export const VanillaForm: FC = () => {
                     container
                     display={"flex"}
                     flexDirection={"row"}
+                    flexWrap={"wrap"}
                     alignItems={"center"}
                     gap={"10px"}
                     marginBottom={"10px"}
                 >
-                    <Grid item xs={2}>
+                    <Grid item>
                         <StyledInput>
                             <label>Name</label>
                             <input type="text" name="name" onChange={handleInputChange} value={formData.name} />
                         </StyledInput>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item>
                         <StyledInput>
                             <label>Age</label>
                             <input type="number" name="age" onChange={handleInputChange} value={formData.age} />
                         </StyledInput>
                     </Grid>
-                    <Grid item xs={2} justifySelf={"center"}>
+                    <Grid justifySelf={"center"}>
                         <StyledInput
                             style={{
                                 justifyContent: "start",
