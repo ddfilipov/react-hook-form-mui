@@ -49,7 +49,14 @@ export const VanillaFormRhf: FC = () => {
         <MainContainer>
             <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "10px" }}>
                 <h1>React Hook Form + Vanilla Inputs</h1>
-                <Grid container display={"flex"} flexDirection={"row"} alignItems={"center"} gap={"10px"}>
+                <Grid
+                    container
+                    display={"flex"}
+                    flexDirection={"row"}
+                    alignItems={"center"}
+                    gap={"10px"}
+                    marginBottom={"10px"}
+                >
                     <Grid item xs={2}>
                         <StyledInput>
                             <label>Name</label>
