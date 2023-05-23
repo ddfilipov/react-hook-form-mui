@@ -5,6 +5,7 @@ import { VanillaForm } from "./VanillaForm";
 import { VanillaFormCustomRhf } from "./VanillaFormCustomRhf";
 import { VanillaFormRhf } from "./VanillaFormRhf";
 import { MuiForm } from "./MuiForm";
+import { ShowcaseForm } from "./ShowcaseForm";
 
 const MainContainer = styled.div`
     height: 100vh;
@@ -17,10 +18,11 @@ const MainContainer = styled.div`
 export const MainComponent: FC = () => {
     return (
         <MainContainer>
-            <VanillaForm />
+            {/* <VanillaForm />
             <VanillaFormRhf />
             <VanillaFormCustomRhf />
-            <MuiForm />
+            <MuiForm /> */}
+            <ShowcaseForm />
         </MainContainer>
     );
 };
